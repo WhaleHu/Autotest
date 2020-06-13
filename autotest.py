@@ -7,7 +7,7 @@ import time
 import yaml
 
 with open('setting.yaml', 'r') as f:
-    set = yaml.load(f)
+    set = yaml.load(f,Loader=yaml.FullLoader)
 x265 = set["x265"]
 vspipe = set["vspipe"]
 setting = set['setting']
@@ -63,7 +63,7 @@ def testenconde(vpy, crf, savepath):
     return ot
 
 
-def vmaf(vpy, mkv):
+def vmaf(vpy: str, mkv: str) -> float:
     outvpy = []
     pattern = re.compile(r'(\w*)\.set_output\(\)')
     with open(vpy, 'r') as f:
@@ -85,13 +85,17 @@ def vmaf(vpy, mkv):
         f.writelines(outvpy)
     shell = f'{vspipe} "temp.vpy" .'
     os.system(shell)
+    with open(f"{mkv}.json", 'r') as f:
+        vmafjs = json.load(f)
+        vmafscore=vmafjs.get("VMAF score")
+    return float(vmafscore)
 
 
 if __name__ == '__main__':
     VS = input("脚本文件")
-    VS='G:/v.vpy'
+    VS='G:/1234567/v.vpy'
     savePath = os.path.split(VS)[0]
-    # ot=testenconde(VS,25,savePath)
-    ot='G:/25.mkv'
+    ot=testenconde(VS,23,savePath)
+
     vmaf(VS,ot)
 

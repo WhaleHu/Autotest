@@ -3,7 +3,7 @@ vspipe: vspipe
 setting:
   qcomp: 0.65
   preset: veryslow
-  bframes: 16
+  bframes: 8
   ctu: 32
   rd: 4
   subme: 5
