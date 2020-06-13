@@ -3,3 +3,5 @@
 temp.vpy
 .idea/*
 .idea/workspace.xml
+test.py
+.gitignore
