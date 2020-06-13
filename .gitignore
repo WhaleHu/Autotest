@@ -1,4 +1,5 @@
 
 *.xml
 temp.vpy
-.idea
+.idea/*
+.idea/workspace.xml
