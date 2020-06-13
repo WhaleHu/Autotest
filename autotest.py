@@ -48,8 +48,8 @@ def testenconde(vpy, crf, savepath):
     shell = f'{vspipe} "{vpy}" --y4m - | "{x265}" -D 10 --preset {preset} --crf {crf} --high-tier --ctu {ctu} --rd 4 ' \
             f'--subme {subme} --ref {ref} --pmode --no-rect --no-amp --rskip 0 --tu-intra-depth 4 --tu-inter-depth 4 --range limited ' \
             f'--no-open-gop --no-sao --rc-lookahead {rclookahead} --no-cutree --bframes {bframes} --vbv-bufsize {vbvbufsize} --vbv-maxrate {vbvmaxrate} ' \
-            f'--colorprim bt709 --transfer bt709 --colormatrix bt709 --deblock {deblock} --ipratio 1.3 --pbratio 1.2 --qcomp {qcomp} ' \
-            f'--aq-mode {aqmode} --aq-strength {aqstrength} --psy-rd {psyrd} --psy-rdoq 1.00 --frames {info} --output "{ot}" --y4m - 2> "{os.path.join(savepath, "temp.txt")}"'
+            f'--colorprim bt709 --transfer bt709 --colormatrix bt709 --deblock {deblock} --ipratio {ipratio} --pbratio {pbratio} --qcomp {qcomp} ' \
+            f'--aq-mode {aqmode} --aq-strength {aqstrength} --psy-rd {psyrd} --psy-rdoq {psyrdoq} --frames {info} --output "{ot}" --y4m - 2> "{os.path.join(savepath, "temp.txt")}"'
     print(shell)
     os.system(shell)
     with open(os.path.join(savepath, "temp.txt"), 'r') as f:
@@ -95,7 +95,6 @@ if __name__ == '__main__':
     VS = input("脚本文件")
     VS='G:/1234567/v.vpy'
     savePath = os.path.split(VS)[0]
-    ot=testenconde(VS,23,savePath)
-
+    ot=testenconde(VS,21,savePath)
     vmaf(VS,ot)
 
