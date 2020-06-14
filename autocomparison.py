@@ -18,7 +18,7 @@ def FrameInfo(clip, title,
     return clip
 
 
-def compare(sclip, eclip, savepath, numb=20, Title='Encode',
+def compare(sclip, eclip, savepath, numb=12, Title='Encode',
             style="sans-serif,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,7,10,10,10,1"):
     os.makedirs(savepath, exist_ok=True)
     flist = []

@@ -33,7 +33,7 @@ psyrd = setting['psy-rd']
 psyrdoq = setting['psy-rdoq']
 
 
-def getcompare(vpy,mkv,numb=20, Title='Encode',style="sans-serif,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,7,10,10,10,1"):
+def getcompare(vpy,mkv,numb=12, Title='Encode',style="sans-serif,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,7,10,10,10,1"):
     outvpy = []
     filepath, fullflname = os.path.split(mkv)
     fname,_ = os.path.splitext(fullflname)
@@ -54,7 +54,7 @@ def getcompare(vpy,mkv,numb=20, Title='Encode',style="sans-serif,20,&H00FFFFFF,&
                       f"{setout} = fvf.Depth({setout}, 10)\n")
         outvpy.append(
             f"out=autocomparison.compare({setout}, srcout, savepath='{savepath}', numb={numb}, Title='{Title}',"
-            f"style='sans-serif,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,7,10,10,10,1')\n")
+            f"style='{style}')\n")
         outvpy.append(r'out.set_output()')
     with open('temp.vpy', 'w') as f:
         f.writelines(outvpy)
@@ -118,10 +118,11 @@ def vmaf(vpy: str, mkv: str) -> float:
 
 if __name__ == '__main__':
     VS = input("脚本文件")
-    VS='G:/1234/v.vpy'
-    savePath = os.path.split(VS)[0]
+    VS='G:/456/v.vpy'
+    savePath = os.path.split(VS)[0]+"/test"
+    os.makedirs(savePath,exist_ok=True)
     for i in [19,20,21,22,23]:
-
-        ot=f"G:/1234/crf/{i}.mkv"
+        ot=testenconde(VS,i,savePath)
+        vmaf=vmaf(VS,ot)
         getcompare(VS,ot)
 
