@@ -33,8 +33,33 @@ psyrd = setting['psy-rd']
 psyrdoq = setting['psy-rdoq']
 
 
-def testvmaf(vpy):
-    pass
+def getcompare(vpy,mkv,numb=20, Title='Encode',style="sans-serif,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,7,10,10,10,1"):
+    outvpy = []
+    filepath, fullflname = os.path.split(mkv)
+    fname,_ = os.path.splitext(fullflname)
+    savepath=os.path.join(filepath,f"com{fname}")
+    pattern = re.compile(r'(\w*)\.set_output\(\)')
+    with open(vpy, 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            if not re.match(pattern, line):
+                outvpy.append(line)
+            else:
+                res = re.match(pattern, line)
+                setout = res.group(1)
+                break
+        outvpy.append(f"srcout=core.ffms2.Source(source=r'{mkv}',threads=1)\n")
+        outvpy.append(f"import fvsfunc as fvf\n"
+                      f"import autocomparison\n"
+                      f"{setout} = fvf.Depth({setout}, 10)\n")
+        outvpy.append(
+            f"out=autocomparison.compare({setout}, srcout, savepath='{savepath}', numb={numb}, Title='{Title}',"
+            f"style='sans-serif,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,7,10,10,10,1')\n")
+        outvpy.append(r'out.set_output()')
+    with open('temp.vpy', 'w') as f:
+        f.writelines(outvpy)
+    shell = f'{vspipe} "temp.vpy" .'
+    os.system(shell)
 
 
 def testenconde(vpy, crf, savepath):
@@ -79,7 +104,7 @@ def vmaf(vpy: str, mkv: str) -> float:
         outvpy.append(f"import fvsfunc as fvf\n"
                       f"{setout} = fvf.Depth({setout}, 10)\n")
         outvpy.append(
-            f"out=core.vmaf.VMAF({setout},srcout,ssim=True, ms_ssim=True, model=0,log_path=r'{mkv}.json',log_fmt=1)\n")
+            f"out=core.vmaf.VMAF({setout},srcout,ssim=True, ms_ssim=True, model=0,log_path=r'{mkv}.json',log_fmt=1,pool=1)\n")
         outvpy.append(r'out.set_output()')
     with open('temp.vpy','w') as f:
         f.writelines(outvpy)
@@ -93,8 +118,10 @@ def vmaf(vpy: str, mkv: str) -> float:
 
 if __name__ == '__main__':
     VS = input("脚本文件")
-    VS='G:/1234567/v.vpy'
+    VS='G:/1234/v.vpy'
     savePath = os.path.split(VS)[0]
-    ot=testenconde(VS,21,savePath)
-    vmaf(VS,ot)
+    for i in [19,20,21,22,23]:
+
+        ot=f"G:/1234/crf/{i}.mkv"
+        getcompare(VS,ot)
 

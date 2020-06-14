@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c64b8a6a-8097-49d5-b927-ca2f98d4aeb9" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/autocomparison.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autotest.py" beforeDir="false" afterPath="$PROJECT_DIR$/autotest.py" afterDir="false" />
     </list>
@@ -104,34 +105,47 @@
       <updated>1591978209718</updated>
       <workItem from="1591978213210" duration="1159000" />
       <workItem from="1592020383985" duration="17171000" />
-      <workItem from="1592065801954" duration="2289000" />
+      <workItem from="1592065801954" duration="3055000" />
+      <workItem from="1592113919481" duration="10881000" />
     </task>
+    <task id="LOCAL-00001" summary="完成评分">
+      <created>1592068975028</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592068975029</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完成评分" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成评分" />
   </component>
   <component name="WindowStateProjectService">
     <state x="575" y="113" key="CommitChangelistDialog2" timestamp="1592068973865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="575" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592068973865" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1592069036081">
+    <state width="938" height="278" key="GridCell.Tab.0.bottom" timestamp="1592139766483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592069036081" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1592069036081">
+    <state width="938" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592139766483" />
+    <state width="938" height="278" key="GridCell.Tab.0.center" timestamp="1592139766483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592069036081" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1592069036081">
+    <state width="938" height="278" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592139766483" />
+    <state width="938" height="278" key="GridCell.Tab.0.left" timestamp="1592139766483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592069036081" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1592069036081">
+    <state width="938" height="278" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592139766483" />
+    <state width="938" height="278" key="GridCell.Tab.0.right" timestamp="1592139766483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592069036081" />
+    <state width="938" height="278" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592139766483" />
     <state width="916" height="351" key="GridCell.Tab.1.bottom" timestamp="1592062231391">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -152,17 +166,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="222" y="188" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592043685530" />
-    <state x="315" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1592065942984">
+    <state x="315" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1592113920778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="315" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592065942984" />
-    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592068978374">
+    <state x="315" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592113920778" />
+    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592139934321">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592068978374" />
+    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592139934321" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Autotest$test.coverage" NAME="test Coverage Results" MODIFIED="1592056143063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Autotest$autotest.coverage" NAME="autotest Coverage Results" MODIFIED="1592068927522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Autotest$autotest.coverage" NAME="autotest Coverage Results" MODIFIED="1592139766473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
