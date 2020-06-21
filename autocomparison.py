@@ -48,7 +48,7 @@ def compare(sclip, eclip, savepath, numb=12, Title='Encode',
     return eclip
 
 
-def comparelist(sclip, eclip, savepath, numb=12, Title='Encode',
+def comparelist(sclip, eclip, savepath,Title, numb=12,
                 style="sans-serif,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,7,10,10,10,1"):
     os.makedirs(savepath, exist_ok=True)
     flist = []
@@ -70,7 +70,7 @@ def comparelist(sclip, eclip, savepath, numb=12, Title='Encode',
         sclip.get_frame(i)
     ecn = 0
     for ec in eclip:
-        ec = FrameInfo(ec, Title, style=style)
+        ec = FrameInfo(ec, Title[ecn], style=style)
         ec = mvf.ToRGB(ec)
         ec = core.imwri.Write(ec, "png", os.path.join(savepath, f'%d-B-{ecn}.png'), overwrite=True)
         for i in flist:

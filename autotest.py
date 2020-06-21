@@ -54,7 +54,7 @@ def getcompare(vpy, mkv, numb=12, Title='Encode',
                       f"import autocomparison\n"
                       f"{setout} = fvf.Depth({setout}, 10)\n")
         outvpy.append(
-            f"out=autocomparison.compare({setout}, srcout, savepath='{savepath}', numb={numb}, Title='{Title}',"
+            f"out=autocomparison.compare({setout}, srcout, savepath=r'{savepath}', numb={numb}, Title='{Title}',"
             f"style='{style}')\n")
         # outvpy.append(r'out.set_output()')
     with open('temp.vpy', 'w') as f:
@@ -63,12 +63,16 @@ def getcompare(vpy, mkv, numb=12, Title='Encode',
     os.system(shell)
 
 
-def getcomparelist(vpy, mkv, numb=12, Title='Encode',
+def getcomparelist(vpy, mkv, numb=12,
                    style="sans-serif,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,7,10,10,10,1"):
     outvpy = []
-    filepath, fullflname = os.path.split(mkv)
-    fname, _ = os.path.splitext(fullflname)
-    savepath = os.path.join(filepath, f"com{fname}")
+    Title=[]
+    for i in mkv:
+        filepath, fullflname = os.path.split(i)
+        fname, _ = os.path.splitext(fullflname)
+        savepath = os.path.join(filepath, f"com{fname}")
+        print(fname)
+        Title.append(fname)
     pattern = re.compile(r'(\w*)\.set_output\(\)')
     with open(vpy, 'r') as f:
         lines = f.readlines()
@@ -79,12 +83,16 @@ def getcomparelist(vpy, mkv, numb=12, Title='Encode',
                 res = re.match(pattern, line)
                 setout = res.group(1)
                 break
-        outvpy.append(f"srcout=core.ffms2.Source(source=r'{mkv}',threads=1)\n")
+        outvpy.append(f"srcout=[]\n")
+        for i in mkv:
+            outvpy.append(f"srcout1=core.ffms2.Source(source=r'{i}',threads=1)\n")
+            outvpy.append(f"srcout.append(srcout1)\n")
+
         outvpy.append(f"import fvsfunc as fvf\n"
                       f"import autocomparison\n"
                       f"{setout} = fvf.Depth({setout}, 10)\n")
-        outvpy.append(
-            f"out=autocomparison.compare({setout}, srcout, savepath='{savepath}', numb={numb}, Title='{Title}',"
+        outvpy.append(f"Title={Title}\n"
+            f"out=autocomparison.comparelist({setout}, srcout, savepath=r'{savepath}',numb={numb},Title=Title,"
             f"style='{style}')\n")
         # outvpy.append(r'out.set_output()')
     with open('temp.vpy', 'w') as f:
@@ -135,7 +143,7 @@ def vmaf(vpy: str, mkv: str) -> float:
         outvpy.append(f"import fvsfunc as fvf\n"
                       f"{setout} = fvf.Depth({setout}, 10)\n")
         outvpy.append(
-            f"out=core.vmaf.VMAF({setout},srcout,ssim=True, ms_ssim=True, model=0,log_path=r'{mkv}.json',log_fmt=1,pool=1)\n")
+            f"out=core.vmaf.VMAF({setout},srcout,ssim=True, ms_ssim=True, model=0,log_path=r'{mkv}.json',log_fmt=1)\n")
         outvpy.append(r'out.set_output()')
     with open('temp.vpy', 'w') as f:
         f.writelines(outvpy)
@@ -149,10 +157,11 @@ def vmaf(vpy: str, mkv: str) -> float:
 
 if __name__ == '__main__':
     VS = input("脚本文件")
-    VS = 'G:/456/v.vpy'
     savePath = os.path.split(VS)[0] + "/test"
     os.makedirs(savePath, exist_ok=True)
-    for i in [20, 21, 22, 23]:
-        ot = testenconde(VS, i, savePath)
+    ots = []
+    for i in [19, 20, 21, 22, 23]:
+        ot =testenconde(VS,i,savePath)
         vmafs = vmaf(VS, ot)
-        getcompare(VS, ot)
+        ots.append(ot)
+    getcomparelist(VS, ots)

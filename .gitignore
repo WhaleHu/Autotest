@@ -8,3 +8,6 @@ test.py
 *.pyc
 *.xml
 .idea/workspace.xml
+*.xml
+*.xml
+/Autotest.rar
